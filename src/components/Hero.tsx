@@ -3,7 +3,7 @@ import { ArrowRight, Play } from 'lucide-react';
 
 function Hero() {
   return (
-    <section className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900">
+    <section id="hero" className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900">
       {/* Partículas de fundo animadas */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (

@@ -13,16 +13,13 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const navItems = [
-    { name: 'Início', href: '#home' },
-    { name: 'Sobre o Curso', href: '#about' },
-    { name: 'Conteúdo', href: '#content' },
-    { name: 'Depoimentos', href: '#testimonials' },
-    { name: 'FAQ', href: '#faq' },
-  ];
-
-  return (
+    { name: 'Início', href: '#hero' },          // Link para a seção Hero
+    { name: 'Recursos', href: '#features' },    // Link para a seção Features
+    { name: 'Depoimentos', href: '#testimonials' }, // Link para a seção Testimonials
+    { name: 'Inscreva-se', href: '#leadform' }, // Link para a seção LeadForm
+    { name: 'FAQ', href: '#faq' },              // Link para uma seção de FAQ (caso queira adicionar)
+  ]; return (
     <>
       {/* Navbar Desktop */}
       <motion.nav
@@ -30,10 +27,10 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
         className={`fixed w-full z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-gray-900/90 backdrop-blur-md border-b border-gray-800'
-            : 'bg-transparent'
-        }`}
+isScrolled
+? 'bg-gray-900/90 backdrop-blur-md border-b border-gray-800'
+: 'bg-transparent'
+}`}
       >
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
@@ -44,10 +41,10 @@ export default function Navbar() {
               className="flex items-center gap-2"
             >
               <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-600 flex items-center justify-center">
-                <span className="font-bold text-gray-900">RV</span>
+                <span className="font-bold text-gray-900">DC</span>
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                ReactVite
+                Digital Course
               </span>
             </motion.a>
 

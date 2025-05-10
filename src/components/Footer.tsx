@@ -1,7 +1,26 @@
 import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
+import React from 'react';
 
-const footerLinks = [
+// Tipos TypeScript
+type NavLink = {
+  name: string;
+  href: string;
+};
+
+type FooterColumn = {
+  title: string;
+  links: NavLink[];
+};
+
+type SocialLink = {
+  icon: React.ReactNode;
+  href: string;
+  label: string;
+};
+
+// Dados do footer
+const footerColumns: FooterColumn[] = [
   {
     title: "Produto",
     links: [
@@ -28,45 +47,50 @@ const footerLinks = [
   }
 ];
 
-const socialLinks = [
-  { icon: <Github className="w-5 h-5" />, href: "#" },
-  { icon: <Twitter className="w-5 h-5" />, href: "#" },
-  { icon: <Linkedin className="w-5 h-5" />, href: "#" },
-  { icon: <Mail className="w-5 h-5" />, href: "#" }
+const socialLinks: SocialLink[] = [
+  { icon: <Github size={20} />, href: "#", label: "GitHub" },
+  { icon: <Twitter size={20} />, href: "#", label: "Twitter" },
+  { icon: <Linkedin size={20} />, href: "#", label: "LinkedIn" },
+  { icon: <Mail size={20} />, href: "#", label: "Email" }
 ];
 
-export default function Footer() {
+const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-gray-900 text-gray-400 border-t border-gray-800">
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          {/* Logo e descrição */}
+    <footer className="bg-gray-900 text-gray-300 border-t border-gray-800">
+      <div className="container mx-auto px-4 py-12 md:px-6">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
+          {/* Brand Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="md:col-span-1"
+            className="space-y-4"
           >
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-600 flex items-center justify-center">
-                <span className="font-bold text-gray-900">RV</span>
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-600">
+                <span className="font-bold text-gray-900">DC</span>
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                ReactVite
+                Digital Course
               </span>
             </div>
-            <p className="text-sm mb-6">
+            
+            <p className="text-sm text-gray-400">
               Transformando iniciantes em desenvolvedores profissionais com cursos de alta qualidade.
             </p>
+            
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
                 <motion.a
-                  key={index}
+                  key={`social-${index}`}
                   href={social.href}
-                  className="text-gray-500 hover:text-yellow-400 transition-colors"
+                  aria-label={social.label}
+                  className="text-gray-400 hover:text-yellow-400 transition-colors"
                   whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.9 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   {social.icon}
                 </motion.a>
@@ -74,25 +98,26 @@ export default function Footer() {
             </div>
           </motion.div>
 
-          {/* Links */}
-          {footerLinks.map((column, index) => (
+          {/* Navigation Links */}
+          {footerColumns.map((column, columnIndex) => (
             <motion.div
-              key={index}
+              key={`column-${columnIndex}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: columnIndex * 0.1 }}
               viewport={{ once: true }}
+              className="space-y-4"
             >
-              <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
                 {column.title}
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2.5">
                 {column.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
+                  <li key={`link-${columnIndex}-${linkIndex}`}>
                     <motion.a
                       href={link.href}
-                      className="text-sm hover:text-yellow-400 transition-colors"
-                      whileHover={{ x: 5 }}
+                      className="text-sm text-gray-400 hover:text-yellow-400 transition-colors"
+                      whileHover={{ x: 4 }}
                     >
                       {link.name}
                     </motion.a>
@@ -109,7 +134,7 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="border-t border-gray-800 my-8"
+          className="my-8 border-t border-gray-800"
         />
 
         {/* Copyright */}
@@ -118,10 +143,10 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex flex-col md:flex-row justify-between items-center text-sm"
+          className="flex flex-col items-center justify-between gap-4 text-sm md:flex-row"
         >
-          <p>© {new Date().getFullYear()} ReactVite. Todos os direitos reservados.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
+          <p>© {currentYear} Digital Course. Todos os direitos reservados.</p>
+          <div className="flex gap-6">
             <a href="#" className="hover:text-yellow-400 transition-colors">Termos</a>
             <a href="#" className="hover:text-yellow-400 transition-colors">Privacidade</a>
             <a href="#" className="hover:text-yellow-400 transition-colors">Cookies</a>
@@ -130,4 +155,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

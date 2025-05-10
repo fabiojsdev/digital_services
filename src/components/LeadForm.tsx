@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function LeadForm() {
   return (
-    <section className="py-20 bg-gradient-to-r from-indigo-900 to-purple-900">
+    <section id="leadform" className="py-20 bg-gradient-to-r from-indigo-900 to-purple-900">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
