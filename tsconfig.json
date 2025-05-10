@@ -1,4 +1,7 @@
 {
+  "compilerOption":{
+    "verbatiModuleSyntax": false,
+  }
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
