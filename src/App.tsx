@@ -1,24 +1,17 @@
-import Hero from "./components/Hero"
-import Features from "./components/Features"
-import LeadForm from "./components/LeadForm"
-import Testimonials from "./components/Testimonials"
-import Footer from "./components/Footer"
-import Navbar from "./components/Navbar"
+import { Hero, Features, Testimonials } from '@/features/home';
+import { Navbar, Footer } from '@/components';
+import { LeadForm } from '@/features/leads';
 
-function App() {
 
+export default function App() {
   return (
-    <>
-      <main>
-        <Navbar />
-        <Hero />
-        <Features />
-        <LeadForm />
-        <Testimonials />
-        <Footer />
-      </main>
-    </>
-  )
+    <main>
+      <Navbar />
+      <Hero />
+      <Features />
+      <LeadForm />
+      <Testimonials />
+      <Footer />
+    </main>
+  );
 }
-
-export default App

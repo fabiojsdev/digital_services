@@ -1,7 +1,7 @@
 import { Mail, User, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export default function LeadForm() {
+export function LeadForm() {
   return (
     <section id="leadform" className="py-20 bg-gradient-to-r from-indigo-900 to-purple-900">
       <div className="container mx-auto px-6">

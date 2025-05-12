@@ -16,9 +16,8 @@ export default function Navbar() {
   const navItems = [
     { name: 'Início', href: '#hero' },          // Link para a seção Hero
     { name: 'Recursos', href: '#features' },    // Link para a seção Features
-    { name: 'Depoimentos', href: '#testimonials' }, // Link para a seção Testimonials
     { name: 'Inscreva-se', href: '#leadform' }, // Link para a seção LeadForm
-    { name: 'FAQ', href: '#faq' },              // Link para uma seção de FAQ (caso queira adicionar)
+    { name: 'Depoimentos', href: '#testimonials' }, // Link para a seção Testimonials
   ]; return (
     <>
       {/* Navbar Desktop */}
